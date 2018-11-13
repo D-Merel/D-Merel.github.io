@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <title>Aframe Environments</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/feiss/aframe-environment-component/ad57b15d/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+
+  </head>
+  <body class="a-body ">
+
+       <!-- Opgave opdracht 
+            Vul dit Aframe bestand verder aan zoals in het voorbeeld (filmpje)
+            - foto (image) toevoegen
+            - sneeuwman afwerken (lichaam, hoofd met ogen en neus)
+            - Tekst "VR sneeuwman" in het midden zetten (zoals in het filmpje)
+            - hyperlink naar "wiki met sneeuwman"
+            - (vrijblijvend:  texture rond box met hyperlink )
+        -->
+   
+      
+    <a-scene effects="bloom, fxaa" bloom="radius: 0.25" fxaa="" class="fullscreen" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui=""><canvas class="a-canvas" data-aframe-canvas="true" width="450" height="225"></canvas>
+      <a-assets>      
+            <img id="foto" src="sneeuwman.JPG">
+      </a-assets>        
+        
+        <!-- Camera -->
+		<a-camera position="0 1.6 0" camera="" look-controls="" wasd-controls="" data-aframe-inspector-original-camera="">
+			<a-entity cursor="fuse:true;fuseTimeout:1000" position="0 0 -1" geometry="primitive:sphere;radius:0.005" material="color:#FF0000;shader:flat;opacity:0.5" raycaster="">
+					  <a-animation attribute="scale" to="3 3 3" dur="1000" begin="cursor-fusing" fill="backwards" easing="linear">
+					  </a-animation>
+			</a-entity>
+		</a-camera>
+        
+        
+        <!-- landschap -->
+        <a-entity id="env1" environment="skyType:atmosphere;skyColor:#0d0d0d;horizonColor:#404040;lightPosition:1.08 2.94 0.95;flatShading:true;groundYScale:4.81;groundTexture:checkerboard;groundColor:#252525;groundColor2:#111111;dressing:cubes;dressingColor:#9f9f9f;dressingScale:1.51;dressingVariance:5 20 5;grid:dots;shadow:true;preset:checkerboard"><a-entity position="0 50 0" light="groundColor:#252525;intensity:0.5491298471525436;type:hemisphere;color:#CEE4F0"></a-entity><a-entity position="1.08 2.94 0.95" light="castShadow:true;shadowCameraLeft:-10;shadowCameraBottom:-10;shadowCameraRight:10;shadowCameraTop:10;intensity:0.5491298471525436"></a-entity><a-entity rotation="-90 0 0" scale="1 1 4.81" shadow="cast:false"></a-entity><a-entity></a-entity><a-sky radius="200" geometry="" theta-length="110" material="shader:skyshader;sunPosition:0.3299729489283994 0.8982596943050872 0.29025398285368464"></a-sky><a-entity id="stars"></a-entity></a-entity>
+
+        <!-- foto -->
+            <a-assets>
+                <img id="foto" src="sneeuwman.jpg">
+            </a-assets>
+        <a-image src="#foto" width="16" height="9" position="0 5.252 -15.686" material=""></a-image>
+            
+        
+        <!-- sneeuwman -->
+        
+
+        <a-sphere id="onderste bol" position="-4.496 1.126 -8.792" radius="1.25" color="white" material="" geometry="" shadow=""></a-sphere>
+        <a-sphere id="middelste bol" position="-4.496 3.018 -8.792" radius="1.25" color="white" geometry="radius:1" shadow="" material=""></a-sphere>
+        <a-sphere id="bovenste bol" position="-4.496 4.409 -8.792" radius="1.25" color="white" geometry="radius:0.7" shadow="" material=""></a-sphere>
+        <a-sphere id="oog 1" position="-4.496 4.409 -8.258" radius="1.25" color="white" material="color:black" geometry="radius:0.2" shadow=""></a-sphere>
+        <a-sphere id="oog 2" position="-4.009 4.409 -8.568" radius="1.25" color="white" material="color:black" geometry="radius:0.2" shadow=""></a-sphere>
+        <a-cone id="neus" color="brown" radius-bottom="1" radius-top="0" position="-4.075 4.276 -8.127" rotation="-80.3859786568545 44.97718691776962 166.0431690289126" material="color:#ff8000" geometry="radiusBottom:0.1;height:0.5" shadow=""></a-cone>
+        <a-cone id="hoed" color="brown" radius-bottom="1" radius-top="0" position="-4.606 5.183 -8.894" rotation="-11 -3 15" material="color:#804000" shadow="" geometry=""></a-cone>
+        
+        
+        <!-- tekst -->
+        <a-entity id="tekst" data-brackets-id="272" text="anchor:left;color:#ffffff;side:double;value:VRsneeuwman;width:8" position="-1.011 0.453 -7.826"></a-entity>
+        
+  
+         <!-- box link naar website  -->    
+        <a-entity id="box met weblink" mixin="col1" geometry="" position="4 0.577 -7" material="shader:flat;side:double;color:#777777;src:[object HTMLImageElement]" event-set__enter="[object Object]" event-set__leave="[object Object]" onclick="location.href='https://nl.wikipedia.org/wiki/Sneeuwpop'">
+        </a-entity>
+        
+        <a-entity id="link" text="anchor:left;color:#00ff00;value:link;width:3.51" position="3.7 0.8 -6.48"></a-entity>
+        <a-entity id="wiki" text="anchor:left;color:#00ff00;value:Wiki;width:3.51" position="3.7 0.6 -6.48"></a-entity>
+        <a-entity id="Sneeuwman" text="anchor:left;color:#00ff00;value:Sneeuwman;width:3.51" position="3.5 0.4 -6.48">
+        </a-entity>
+        
+        
+
+        
+        
+    </a-scene>
+  
+
+</body></html>
